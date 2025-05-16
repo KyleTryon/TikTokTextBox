@@ -6,7 +6,7 @@ function App() {
   return (
     <div style={{
       display: "flex",
-      flexDirection: "row",
+      flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       height: "100vh",
