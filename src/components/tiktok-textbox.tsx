@@ -5,7 +5,7 @@ interface TikTokTextBoxProps {
   bgColor?: string;
   textColor?: string;
   className?: string;
-  borderRadius: number;
+  borderRadius?: number;
 }
 
 interface CornerRounding {
@@ -89,7 +89,8 @@ const TikTokTextLine: React.FC<{
   bgColor: string;
   borderRadius: string;
   className?: string;
-}> = ({ text, align, bgColor, borderRadius, className }) => {
+  style?: React.CSSProperties;
+}> = ({ text, align, bgColor, borderRadius, className, style }) => {
   return (
     <div
       style={{
@@ -100,7 +101,8 @@ const TikTokTextLine: React.FC<{
         borderRadius: borderRadius,
         width: "fit-content",
         transition: "border-radius 0.2s",
-        "--bgColor": bgColor ?? "white", 
+        "--bgColor": bgColor ?? "white",
+        ...style
       } as React.CSSProperties}
       className={className}
     >
@@ -143,6 +145,8 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
             align={align}
             bgColor={bgColor}
             borderRadius={getBorderRadius(roundings[i], borderRadius)}
+            style={{
+            }}
             className={`tiktok-text-line ${roundings[i].classList.join(" ")}`}
           />
         ))}
@@ -171,19 +175,19 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
           }
           .tiktok-text-line.corner-tl::before {
             border-top-right-radius: ${borderRadius}em;
-            box-shadow: 0em -0.4em 0 var(--bgColor);
+            box-shadow: 0em -${borderRadius * 2}em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-bl::before {
             border-bottom-right-radius: ${borderRadius}em;
-            box-shadow: 0em 0.4em 0 var(--bgColor);
+            box-shadow: 0em ${borderRadius * 2}em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-tr::after {
             border-top-left-radius: ${borderRadius}em;
-            box-shadow: 0em -0.4em 0 var(--bgColor);
+            box-shadow: 0em -${borderRadius * 2}em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-br::after {
             border-bottom-left-radius: ${borderRadius}em;
-            box-shadow: 0.0em 0.4em 0 var(--bgColor);
+            box-shadow: 0em ${borderRadius * 2}em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-left::before {
             content: '';
@@ -197,8 +201,8 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
             border-top-right-radius: ${borderRadius}em;
             border-bottom-right-radius: ${borderRadius}em;
             box-shadow:
-              0 -0.4em 0 var(--bgColor),
-              0 0.4em 0 var(--bgColor);
+              0 -${borderRadius}em 0 var(--bgColor),
+              0 ${borderRadius}em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-right::after {
             content: '';
@@ -212,8 +216,8 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
             border-top-left-radius: ${borderRadius}em;
             border-bottom-left-radius: ${borderRadius}em;
             box-shadow:
-              0 -0.4em 0 var(--bgColor),
-              0 0.4em 0 var(--bgColor);
+              0 -${borderRadius}em 0 var(--bgColor),
+              0 ${borderRadius}em 0 var(--bgColor);
           }
         }
       `}
