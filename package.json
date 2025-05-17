@@ -1,15 +1,24 @@
 {
   "name": "tiktok-textbox",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
+  "main": "dist/tiktok-textbox.cjs.js",
+  "module": "dist/tiktok-textbox.es.js",
+  "unpkg": "dist/tiktok-textbox.umd.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build && tsc --emitDeclarationOnly --project tsconfig.node.json",
+    "prepublishOnly": "npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "peerDependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
