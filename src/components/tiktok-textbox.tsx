@@ -117,7 +117,7 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
   fontFamily,
   bgColor = "white",
   textColor,
-  borderRadius = 0.25,
+  borderRadius = 0.15,
 }) => {
   const roundings = getCornerRoundings(lines, align);
 
