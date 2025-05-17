@@ -5,7 +5,7 @@ interface TikTokTextBoxProps {
   bgColor?: string;
   textColor?: string;
   className?: string;
-  borderRadius?: string;
+  borderRadius: number;
 }
 
 interface CornerRounding {
@@ -15,8 +15,6 @@ interface CornerRounding {
   BR: boolean;
   classList: string[];
 }
-
-const defaultBorderRadius = "0.25em";
 
 const getCornerRoundings = (
   lines: string[], 
@@ -76,12 +74,12 @@ const getCornerRoundings = (
   });
 };
 
-const getBorderRadius = (rounding: CornerRounding, radius: string = defaultBorderRadius) => {
+const getBorderRadius = (rounding: CornerRounding, radius: number) => {
   return [
-    rounding.TL ? radius : "0",
-    rounding.TR ? radius : "0",
-    rounding.BR ? radius : "0",
-    rounding.BL ? radius : "0"
+    rounding.TL ? `${radius}em` : "0",
+    rounding.TR ? `${radius}em` : "0",
+    rounding.BR ? `${radius}em` : "0",
+    rounding.BL ? `${radius}em` : "0"
   ].join(" ");
 };
 
@@ -89,9 +87,9 @@ const TikTokTextLine: React.FC<{
   text: string;
   align?: React.CSSProperties['textAlign'];
   bgColor: string;
-  borderRadius?: string;
+  borderRadius: string;
   className?: string;
-}> = ({ text, align, bgColor, borderRadius = defaultBorderRadius, className }) => {
+}> = ({ text, align, bgColor, borderRadius, className }) => {
   return (
     <div
       style={{
@@ -117,7 +115,7 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
   fontFamily,
   bgColor = "white",
   textColor,
-  borderRadius = defaultBorderRadius,
+  borderRadius = 0.25,
 }) => {
   const roundings = getCornerRoundings(lines, align);
 
@@ -159,45 +157,45 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
             position: absolute;
             top: 0;
             background-color: transparent;
-            width: ${borderRadius};
+            width: ${borderRadius}em;
             height: 100%;
             clip-path: inset(-1px);
           }
           .tiktok-text-line.corner-tl::before,
           .tiktok-text-line.corner-bl::before {
-            left: -${borderRadius};
+            left: -${borderRadius}em;
           }
           .tiktok-text-line.corner-tr::after,
           .tiktok-text-line.corner-br::after {
-            right: -${borderRadius};
+            right: -${borderRadius}em;
           }
           .tiktok-text-line.corner-tl::before {
-            border-top-right-radius: ${borderRadius};
+            border-top-right-radius: ${borderRadius}em;
             box-shadow: 0em -0.4em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-bl::before {
-            border-bottom-right-radius: ${borderRadius};
+            border-bottom-right-radius: ${borderRadius}em;
             box-shadow: 0em 0.4em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-tr::after {
-            border-top-left-radius: ${borderRadius};
+            border-top-left-radius: ${borderRadius}em;
             box-shadow: 0em -0.4em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-br::after {
-            border-bottom-left-radius: ${borderRadius};
+            border-bottom-left-radius: ${borderRadius}em;
             box-shadow: 0.0em 0.4em 0 var(--bgColor);
           }
           .tiktok-text-line.corner-left::before {
             content: '';
             display: block;
             position: absolute;
-            left: -${borderRadius};
+            left: -${borderRadius}em;
             top: 0;
-            width: ${borderRadius};
+            width: ${borderRadius}em;
             height: 100%;
             background: transparent;
-            border-top-right-radius: ${borderRadius};
-            border-bottom-right-radius: ${borderRadius};
+            border-top-right-radius: ${borderRadius}em;
+            border-bottom-right-radius: ${borderRadius}em;
             box-shadow:
               0 -0.4em 0 var(--bgColor),
               0 0.4em 0 var(--bgColor);
@@ -206,13 +204,13 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
             content: '';
             display: block;
             position: absolute;
-            right: -${borderRadius};
+            right: -${borderRadius}em;
             top: 0;
-            width: ${borderRadius};
+            width: ${borderRadius}em;
             height: 100%;
             background: transparent;
-            border-top-left-radius: ${borderRadius};
-            border-bottom-left-radius: ${borderRadius};
+            border-top-left-radius: ${borderRadius}em;
+            border-bottom-left-radius: ${borderRadius}em;
             box-shadow:
               0 -0.4em 0 var(--bgColor),
               0 0.4em 0 var(--bgColor);
