@@ -102,7 +102,6 @@ const TikTokTextLine: React.FC<{
         padding: "20px 10px",
         borderRadius: borderRadius,
         width: "fit-content",
-        "--bgColor": bgColor ?? "white",
         ...style
       } as React.CSSProperties}
       className={className}
