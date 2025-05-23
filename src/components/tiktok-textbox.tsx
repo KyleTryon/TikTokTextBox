@@ -90,7 +90,9 @@ const TikTokTextLine: React.FC<{
   borderRadius: string;
   className?: string;
   style?: React.CSSProperties;
-}> = ({ text, align, bgColor, borderRadius, className, style }) => {
+  cornerRounding: CornerRounding;
+  borderRadiusValue: number;
+}> = ({ text, align, bgColor, borderRadius, className, style, cornerRounding, borderRadiusValue }) => {
   return (
     <div
       style={{
@@ -106,6 +108,80 @@ const TikTokTextLine: React.FC<{
       className={className}
     >
       {text}
+      {cornerRounding.classList.includes("corner-tl") && (
+        <div style={{
+          position: "absolute",
+          left: -borderRadiusValue,
+          top: 0,
+          width: borderRadiusValue,
+          height: "100%",
+          background: "transparent",
+          borderTopRightRadius: borderRadiusValue,
+          boxShadow: `0px -${borderRadiusValue * 2}px 0 ${bgColor}`,
+        }} />
+      )}
+      {cornerRounding.classList.includes("corner-bl") && (
+        <div style={{
+          position: "absolute",
+          left: -borderRadiusValue,
+          top: 0,
+          width: borderRadiusValue,
+          height: "100%",
+          background: "transparent",
+          borderBottomRightRadius: borderRadiusValue,
+          boxShadow: `0px ${borderRadiusValue * 2}px 0 ${bgColor}`,
+        }} />
+      )}
+      {cornerRounding.classList.includes("corner-tr") && (
+        <div style={{
+          position: "absolute",
+          right: -borderRadiusValue,
+          top: 0,
+          width: borderRadiusValue,
+          height: "100%",
+          background: "transparent",
+          borderTopLeftRadius: borderRadiusValue,
+          boxShadow: `0px -${borderRadiusValue * 2}px 0 ${bgColor}`,
+        }} />
+      )}
+      {cornerRounding.classList.includes("corner-br") && (
+        <div style={{
+          position: "absolute",
+          right: -borderRadiusValue,
+          top: 0,
+          width: borderRadiusValue,
+          height: "100%",
+          background: "transparent",
+          borderBottomLeftRadius: borderRadiusValue,
+          boxShadow: `0px ${borderRadiusValue * 2}px 0 ${bgColor}`,
+        }} />
+      )}
+      {cornerRounding.classList.includes("corner-left") && (
+        <div style={{
+          position: "absolute",
+          left: -borderRadiusValue,
+          top: 0,
+          width: borderRadiusValue,
+          height: "100%",
+          background: "transparent",
+          borderTopRightRadius: borderRadiusValue,
+          borderBottomRightRadius: borderRadiusValue,
+          boxShadow: `0 -${borderRadiusValue}px 0 ${bgColor}, 0 ${borderRadiusValue}px 0 ${bgColor}`,
+        }} />
+      )}
+      {cornerRounding.classList.includes("corner-right") && (
+        <div style={{
+          position: "absolute",
+          right: -borderRadiusValue,
+          top: 0,
+          width: borderRadiusValue,
+          height: "100%",
+          background: "transparent",
+          borderTopLeftRadius: borderRadiusValue,
+          borderBottomLeftRadius: borderRadiusValue,
+          boxShadow: `0 -${borderRadiusValue}px 0 ${bgColor}, 0 ${borderRadiusValue}px 0 ${bgColor}`,
+        }} />
+      )}
     </div>
   );
 };
@@ -121,106 +197,34 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
   const roundings = getCornerRoundings(lines, align);
 
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: align === "left"
-            ? "flex-start"
-            : align === "right"
-              ? "flex-end"
-              : "center",
-          textAlign: align,
-          fontFamily: fontFamily,
-          color: textColor ?? "black",
-          width: "fit-content",
-        }}
-      >
-        {lines.map((line, i) => (
-          <TikTokTextLine
-            key={i}
-            text={line}
-            align={align}
-            bgColor={bgColor}
-            borderRadius={getBorderRadius(roundings[i], borderRadius)}
-            style={{
-            }}
-            className={`tiktok-text-line ${roundings[i].classList.join(" ")}`}
-          />
-        ))}
-      </div><style>
-        {`
-          .tiktok-text-line.corner-tl::before,
-          .tiktok-text-line.corner-bl::before, 
-          .tiktok-text-line.corner-tr::after,
-          .tiktok-text-line.corner-br::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            background-color: transparent;
-            width: ${borderRadius}px;
-            height: 100%;
-            clip-path: inset(-2px);
-          }
-          .tiktok-text-line.corner-tl::before,
-          .tiktok-text-line.corner-bl::before {
-            left: -${borderRadius}px;
-          }
-          .tiktok-text-line.corner-tr::after,
-          .tiktok-text-line.corner-br::after {
-            right: -${borderRadius}px;
-          }
-          .tiktok-text-line.corner-tl::before {
-            border-top-right-radius: ${borderRadius}px;
-            box-shadow: 0px -${borderRadius * 2}px 0 var(--bgColor);
-          }
-          .tiktok-text-line.corner-bl::before {
-            border-bottom-right-radius: ${borderRadius}px;
-            box-shadow: 0px ${borderRadius * 2}px 0 var(--bgColor);
-          }
-          .tiktok-text-line.corner-tr::after {
-            border-top-left-radius: ${borderRadius}px;
-            box-shadow: 0px -${borderRadius * 2}px 0 var(--bgColor);
-          }
-          .tiktok-text-line.corner-br::after {
-            border-bottom-left-radius: ${borderRadius}px;
-            box-shadow: 0px ${borderRadius * 2}px 0 var(--bgColor);
-          }
-          .tiktok-text-line.corner-left::before {
-            content: '';
-            display: block;
-            position: absolute;
-            left: -${borderRadius}px;
-            top: 0;
-            width: ${borderRadius}px;
-            height: 100%;
-            background: transparent;
-            border-top-right-radius: ${borderRadius}px;
-            border-bottom-right-radius: ${borderRadius}px;
-            box-shadow:
-              0 -${borderRadius}px 0 var(--bgColor),
-              0 ${borderRadius}px 0 var(--bgColor);
-          }
-          .tiktok-text-line.corner-right::after {
-            content: '';
-            display: block;
-            position: absolute;
-            right: -${borderRadius}px;
-            top: 0;
-            width: ${borderRadius}px;
-            height: 100%;
-            background: transparent;
-            border-top-left-radius: ${borderRadius}px;
-            border-bottom-left-radius: ${borderRadius}px;
-            box-shadow:
-              0 -${borderRadius}px 0 var(--bgColor),
-              0 ${borderRadius}px 0 var(--bgColor);
-          }
-        }
-      `}
-      </style>
-    </>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: align === "left"
+          ? "flex-start"
+          : align === "right"
+            ? "flex-end"
+            : "center",
+        textAlign: align,
+        fontFamily: fontFamily,
+        color: textColor ?? "black",
+        width: "fit-content",
+      }}
+    >
+      {lines.map((line, i) => (
+        <TikTokTextLine
+          key={i}
+          text={line}
+          align={align}
+          bgColor={bgColor}
+          borderRadius={getBorderRadius(roundings[i], borderRadius)}
+          style={{}}
+          className={`tiktok-text-line ${roundings[i].classList.join(" ")}`}
+          cornerRounding={roundings[i]}
+          borderRadiusValue={borderRadius}
+        />
+      ))}
+    </div>
   );
 };

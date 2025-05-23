@@ -18,7 +18,7 @@ function App() {
       <TikTokTextBox lines={["Align Left", "with two lines", "Third Line"]} align="left" fontFamily="Arial" bgColor="red" />
       <TikTokTextBox lines={["Align Center", "short", "Third Line"]} align="center" fontFamily="Proxima Nova Semibold" />
       <TikTokTextBox lines={["Align Right", "with two lines", "Third Line"]} align="right" bgColor="#FF683E" textColor="black" />
-      <TikTokTextBox lines={["short1", "short", "Third Line"]} align="center" fontFamily="Proxima Nova Semibold" />
+      <TikTokTextBox lines={["short1", "short"]} align="center" fontFamily="Proxima Nova Semibold" />
     </div>
   )
 }
