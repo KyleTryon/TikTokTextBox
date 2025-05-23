@@ -114,7 +114,7 @@ const TikTokTextLine: React.FC<{
           top: 0,
           width: borderRadiusValue,
           height: "100%",
-          background: "transparent",
+          background: "rgba(255, 0, 0, 1)",
           borderTopRightRadius: borderRadiusValue,
           boxShadow: `0px -${borderRadiusValue * 2}px 0 ${bgColor}`,
         }} />
@@ -126,7 +126,7 @@ const TikTokTextLine: React.FC<{
           top: 0,
           width: borderRadiusValue,
           height: "100%",
-          background: "transparent",
+          background: "rgba(0, 255, 0, 1)",
           borderBottomRightRadius: borderRadiusValue,
           boxShadow: `0px ${borderRadiusValue * 2}px 0 ${bgColor}`,
         }} />
@@ -138,7 +138,7 @@ const TikTokTextLine: React.FC<{
           top: 0,
           width: borderRadiusValue,
           height: "100%",
-          background: "transparent",
+          background: "rgba(0, 0, 255, 1)",
           borderTopLeftRadius: borderRadiusValue,
           boxShadow: `0px -${borderRadiusValue * 2}px 0 ${bgColor}`,
         }} />
@@ -150,7 +150,7 @@ const TikTokTextLine: React.FC<{
           top: 0,
           width: borderRadiusValue,
           height: "100%",
-          background: "transparent",
+          background: "rgba(255, 255, 0, 1)",
           borderBottomLeftRadius: borderRadiusValue,
           boxShadow: `0px ${borderRadiusValue * 2}px 0 ${bgColor}`,
         }} />
@@ -162,7 +162,7 @@ const TikTokTextLine: React.FC<{
           top: 0,
           width: borderRadiusValue,
           height: "100%",
-          background: "transparent",
+          background: "rgba(255, 0, 255, 1)",
           borderTopRightRadius: borderRadiusValue,
           borderBottomRightRadius: borderRadiusValue,
           boxShadow: `0 -${borderRadiusValue}px 0 ${bgColor}, 0 ${borderRadiusValue}px 0 ${bgColor}`,
@@ -175,7 +175,7 @@ const TikTokTextLine: React.FC<{
           top: 0,
           width: borderRadiusValue,
           height: "100%",
-          background: "transparent",
+          background: "rgba(0, 255, 255, 1)",
           borderTopLeftRadius: borderRadiusValue,
           borderBottomLeftRadius: borderRadiusValue,
           boxShadow: `0 -${borderRadiusValue}px 0 ${bgColor}, 0 ${borderRadiusValue}px 0 ${bgColor}`,
