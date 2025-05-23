@@ -5,7 +5,7 @@
   "main": "dist/tiktok-textbox.cjs.js",
   "module": "dist/tiktok-textbox.es.js",
   "unpkg": "dist/tiktok-textbox.umd.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/tiktok-textbox.d.ts",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,6 +14,10 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
