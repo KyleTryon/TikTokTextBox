@@ -76,10 +76,10 @@ const getCornerRoundings = (
 
 const getBorderRadius = (rounding: CornerRounding, radius: number) => {
   return [
-    rounding.TL ? `${radius}em` : "0",
-    rounding.TR ? `${radius}em` : "0",
-    rounding.BR ? `${radius}em` : "0",
-    rounding.BL ? `${radius}em` : "0"
+    rounding.TL ? `${radius}px` : "0",
+    rounding.TR ? `${radius}px` : "0",
+    rounding.BR ? `${radius}px` : "0",
+    rounding.BL ? `${radius}px` : "0"
   ].join(" ");
 };
 
@@ -97,10 +97,9 @@ const TikTokTextLine: React.FC<{
         position: "relative",
         textAlign: align,
         backgroundColor: bgColor ?? "white",
-        padding: "0.15em 0.4em",
+        padding: "20px 10px",
         borderRadius: borderRadius,
         width: "fit-content",
-        transition: "border-radius 0.2s",
         "--bgColor": bgColor ?? "white",
         ...style
       } as React.CSSProperties}
@@ -117,7 +116,7 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
   fontFamily,
   bgColor = "white",
   textColor,
-  borderRadius = 0.15,
+  borderRadius = 7,
 }) => {
   const roundings = getCornerRoundings(lines, align);
 
@@ -161,63 +160,63 @@ export const TikTokTextBox: React.FC<TikTokTextBoxProps> = ({
             position: absolute;
             top: 0;
             background-color: transparent;
-            width: ${borderRadius}em;
+            width: ${borderRadius}px;
             height: 100%;
-            clip-path: inset(-1px);
+            clip-path: inset(-2px);
           }
           .tiktok-text-line.corner-tl::before,
           .tiktok-text-line.corner-bl::before {
-            left: -${borderRadius}em;
+            left: -${borderRadius}px;
           }
           .tiktok-text-line.corner-tr::after,
           .tiktok-text-line.corner-br::after {
-            right: -${borderRadius}em;
+            right: -${borderRadius}px;
           }
           .tiktok-text-line.corner-tl::before {
-            border-top-right-radius: ${borderRadius}em;
-            box-shadow: 0em -${borderRadius * 2}em 0 var(--bgColor);
+            border-top-right-radius: ${borderRadius}px;
+            box-shadow: 0px -${borderRadius * 2}px 0 var(--bgColor);
           }
           .tiktok-text-line.corner-bl::before {
-            border-bottom-right-radius: ${borderRadius}em;
-            box-shadow: 0em ${borderRadius * 2}em 0 var(--bgColor);
+            border-bottom-right-radius: ${borderRadius}px;
+            box-shadow: 0px ${borderRadius * 2}px 0 var(--bgColor);
           }
           .tiktok-text-line.corner-tr::after {
-            border-top-left-radius: ${borderRadius}em;
-            box-shadow: 0em -${borderRadius * 2}em 0 var(--bgColor);
+            border-top-left-radius: ${borderRadius}px;
+            box-shadow: 0px -${borderRadius * 2}px 0 var(--bgColor);
           }
           .tiktok-text-line.corner-br::after {
-            border-bottom-left-radius: ${borderRadius}em;
-            box-shadow: 0em ${borderRadius * 2}em 0 var(--bgColor);
+            border-bottom-left-radius: ${borderRadius}px;
+            box-shadow: 0px ${borderRadius * 2}px 0 var(--bgColor);
           }
           .tiktok-text-line.corner-left::before {
             content: '';
             display: block;
             position: absolute;
-            left: -${borderRadius}em;
+            left: -${borderRadius}px;
             top: 0;
-            width: ${borderRadius}em;
+            width: ${borderRadius}px;
             height: 100%;
             background: transparent;
-            border-top-right-radius: ${borderRadius}em;
-            border-bottom-right-radius: ${borderRadius}em;
+            border-top-right-radius: ${borderRadius}px;
+            border-bottom-right-radius: ${borderRadius}px;
             box-shadow:
-              0 -${borderRadius}em 0 var(--bgColor),
-              0 ${borderRadius}em 0 var(--bgColor);
+              0 -${borderRadius}px 0 var(--bgColor),
+              0 ${borderRadius}px 0 var(--bgColor);
           }
           .tiktok-text-line.corner-right::after {
             content: '';
             display: block;
             position: absolute;
-            right: -${borderRadius}em;
+            right: -${borderRadius}px;
             top: 0;
-            width: ${borderRadius}em;
+            width: ${borderRadius}px;
             height: 100%;
             background: transparent;
-            border-top-left-radius: ${borderRadius}em;
-            border-bottom-left-radius: ${borderRadius}em;
+            border-top-left-radius: ${borderRadius}px;
+            border-bottom-left-radius: ${borderRadius}px;
             box-shadow:
-              0 -${borderRadius}em 0 var(--bgColor),
-              0 ${borderRadius}em 0 var(--bgColor);
+              0 -${borderRadius}px 0 var(--bgColor),
+              0 ${borderRadius}px 0 var(--bgColor);
           }
         }
       `}
